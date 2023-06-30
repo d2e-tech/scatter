@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option go_package = "github.com/d2e-tech/scatter";
+
+package pb;
+
+service Scatter {
+  // Ingests observations
+  rpc Ingest (IngestRequest) returns (IngestReply) {}
+}
+
+message Observation {
+  string key = 1;
+  float value = 2;
+}
+
+message IngestRequest {
+  repeated Observation observations = 1;
+}
+
+message IngestReply {
+  optional string error = 1;
+}
